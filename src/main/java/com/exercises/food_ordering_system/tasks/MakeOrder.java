@@ -1,8 +1,8 @@
 package com.exercises.food_ordering_system.tasks;
 
-import com.exercises.food_ordering_system.menu.DrinksMenu;
-import com.exercises.food_ordering_system.menu.FoodMenu;
-import com.exercises.food_ordering_system.menu.LunchesMenu;
+import com.exercises.food_ordering_system.builder.OrderBuilder;
+import com.exercises.food_ordering_system.builder.menu.Drink;
+import com.exercises.food_ordering_system.builder.menu.main_courses.MainCourse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,14 @@ public class MakeOrder {
 
     public static void startOrdering() {
 
+
+
+
+    }
+}
+
+
+/*
         int price = 0;
         List<String> myOrder = new ArrayList<>();
 
@@ -21,20 +29,20 @@ public class MakeOrder {
     }
 
     private static void choice() {
-        LunchesMenu lunch = new LunchesMenu();
-        DrinksMenu drink = new DrinksMenu();
+        MainCourse mainCourse = new MainCourse();
+        Drink drink = new Drink();
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
         try {
             switch (Integer.parseInt(userInput)) {
                 case 1:
-                    lunch.ordering();
+                    mainCourse.ordering();
                     break;
                 case 2:
                     drink.ordering();
                     break;
                 case 3:
-                    lunch.ordering();
+                    mainCourse.ordering();
                     drink.ordering();
                     break;
                 default:
@@ -48,6 +56,4 @@ public class MakeOrder {
         }
 
     }
-
-
-}
+*/

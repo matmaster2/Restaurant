@@ -1,14 +1,43 @@
-package com.exercises.food_ordering_system.menu;
+package com.exercises.food_ordering_system.builder.menu;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
-import static java.lang.ClassLoader.getSystemClassLoader;
+public class Drink {
 
-public class DrinksMenu {
+    private ArrayList<String> drink = new ArrayList<>();
+
+    public void setDrink(){
+        drink.add("tea");
+    }
+
+    public String getDrink(){
+        return drink.get(0);
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    List<String> drinks = new ArrayList<>();
 
     public void ordering() {
         System.out.println("Do you want alcohol[1] or non-alcohol[2] drink?");
@@ -16,28 +45,17 @@ public class DrinksMenu {
     }
 
     void showMenu(int i) {
-        List<String> drinks = new ArrayList<>();
         String filePath;
         switch (i) {
             case 1:
                 filePath = "food_ordering_system/foods_and_drinks/drinks/alcohol";
-
-                try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(getSystemClassLoader().getResourceAsStream(String.valueOf(filePath))))) {
-                    String drink = fileReader.readLine();
-                    do {
-                        drinks.add(drink);
-                        drink = fileReader.readLine();
-                    } while (drink != null);
-                } catch (Exception e) {
-                    System.out.println("Wybuchlo!");
-                }
-
+                readFromFile(filePath);
                 drinks.forEach(System.out::println);
-
-
 
             case 2:
                 filePath = "food_ordering_system/foods_and_drinks/drinks/non_alcohol";
+                readFromFile(filePath);
+                drinks.forEach(System.out::println);
         }
     }
 
@@ -65,4 +83,18 @@ public class DrinksMenu {
         }
 
     }
-}
+
+    private void readFromFile(String filePath){
+
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(getSystemClassLoader().getResourceAsStream(String.valueOf(filePath))))) {
+            String drink = fileReader.readLine();
+            do {
+                drinks.add(drink);
+                drink = fileReader.readLine();
+            } while (drink != null);
+        } catch (Exception e) {
+            System.out.println("Wybuchlo!");
+        }
+
+    }*/
+
