@@ -1,20 +1,31 @@
 package com.exercises.food_ordering_system.builder.menu;
 
+import com.exercises.food_ordering_system.builder.Meal;
+
 import java.util.ArrayList;
 
-public class Drink {
+public class Drink implements Meal {
 
-    private ArrayList<String> drink = new ArrayList<>();
+    private ArrayList<String> drinks = new ArrayList<>();
 
-    public void setDrink(){
-        drink.add("tea");
+    public void setDrink(String drink){
+        drinks.add(drink);
     }
 
     public String getDrink(){
-        return drink.get(0);
+        return drinks.get(0);
     }
 
 
+    @Override
+    public String name() {
+        return "Drink";
+    }
+
+    @Override
+    public double price() {
+        return 20;
+    }
 }
 
 

@@ -4,7 +4,6 @@ import static com.exercises.food_ordering_system.tasks.MakeOrder.startOrdering;
 
 public class Main {
 
-    public static void main(String[] args) {
-        startOrdering();
+    public static void main(String[] args) { startOrdering();
     }
 }
