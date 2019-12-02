@@ -3,20 +3,25 @@ package com.exercises.food_ordering_system.tasks;
 import com.exercises.food_ordering_system.builder.Order;
 import com.exercises.food_ordering_system.builder.OrderBuilder;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.lang.ClassLoader.getSystemClassLoader;
 
 public class MakeOrder {
 
     private static ArrayList<Order> orderList = new ArrayList<>();
 
     public static void startOrdering() {
-
         System.out.println("INSTRUCTION: For navigation, please press the buttons written in square brackets []\n");
         System.out.println("What do you want - lunch[1] or drink[2] or both of them?[3]");
         orderChoice();
         showSummary();
     }
+
 
     private static void orderChoice() {
         Scanner sc = new Scanner(System.in);
@@ -47,13 +52,9 @@ public class MakeOrder {
     }
 
     private static void mainCourseChoice() {
+        ArrayList<String> listOfMainCourses = fillAList("food_ordering_system//foods_and_drinks//type_of_main_courses");
+        listOfMainCourses.forEach(System.out::println);
 
-        System.out.println(
-                "Types of main courses:\n" +
-                        "- Italian[1]\n" +
-                        "- Mexican[2]\n" +
-                        "- Polish[3]"
-        );
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
         OrderBuilder orderBuilder;
@@ -78,23 +79,21 @@ public class MakeOrder {
                     break;
                 default:
                     System.out.println("Kliknales coś innego!");
-                    startOrdering();
+                    System.exit(0);
                     break;
             }
         } catch (Exception e) {
             System.out.println("Musisz podać liczbę!");
-            startOrdering();
+            System.exit(0);
         }
     }
 
 
     private static void drinkChoice() {
 
-        System.out.println(
-                "Types of drinks:\n" +
-                        "- drink [1]\n" +
-                        "- drink with additive[2]"
-        );
+        ArrayList<String> listOfDrinks = fillAList("food_ordering_system//foods_and_drinks//type_of_drinks");
+        listOfDrinks.forEach(System.out::println);
+
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
         OrderBuilder orderBuilder;
@@ -114,12 +113,12 @@ public class MakeOrder {
                     break;
                 default:
                     System.out.println("Kliknales coś innego!");
-                    startOrdering();
+                    System.exit(0);;
                     break;
             }
         } catch (Exception e) {
             System.out.println("Musisz podać liczbę!");
-            startOrdering();
+            System.exit(0);
         }
     }
 
@@ -133,44 +132,22 @@ public class MakeOrder {
     }
 
 
-}
+    private static ArrayList<String> fillAList(String filePath){
 
-
-/*
-        int price = 0;
-        List<String> myOrder = new ArrayList<>();
-
-        System.out.println("INSTRUCTION: For navigation, please press the buttons written in square brackets []/n");
-        System.out.println("What do you want - lunch[1] or drink[2] or both of them?[3]");
-        choice();
-    }
-
-    private static void choice() {
-        MainCourse mainCourse = new MainCourse();
-        Drink drink = new Drink();
-        Scanner sc = new Scanner(System.in);
-        String userInput = sc.nextLine();
-        try {
-            switch (Integer.parseInt(userInput)) {
-                case 1:
-                    mainCourse.ordering();
-                    break;
-                case 2:
-                    drink.ordering();
-                    break;
-                case 3:
-                    mainCourse.ordering();
-                    drink.ordering();
-                    break;
-                default:
-                    System.out.println("Kliknales coś innego!");
-                    startOrdering();
-                    break;
-            }
+        String meal = "";
+        ArrayList<String> listOfMeal = new ArrayList<>();
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(getSystemClassLoader().getResourceAsStream(String.valueOf(filePath))))) {
+            meal = fileReader.readLine();
+            do {
+                listOfMeal.add(meal);
+                meal = fileReader.readLine();
+            } while (meal != null);
         } catch (Exception e) {
-            System.out.println("Musisz podać liczbę!");
-            startOrdering();
+            System.out.println("Exepction! " + e);
         }
 
+        return listOfMeal;
     }
-*/
+
+
+}
