@@ -9,39 +9,41 @@ import com.exercises.food_ordering_system.builder.menu.main_courses.PolishMainCo
 
 public class OrderBuilder {
 
-    public Order orderDrink(){
+    public Order orderDrink(String drink){
         Order order = new Order();
-        order.addMeal(new Drink());
+        order.addMeal(new Drink(drink));
         return order;
     }
 
-    public Order orderDrinkWithAdditive(){
+    public Order orderDrinkAdditive(String drinkAdditive){
         Order order = new Order();
-        order.addMeal(new Drink());
-        order.addMeal(new DrinkAdditive());
+        order.addMeal(new DrinkAdditive(drinkAdditive));
         return order;
     }
 
-    public Order orderItalianLunch(){
+    public Order orderItalianLunch(String mainCourse, String dessert){
         Order order = new Order();
-        order.addMeal(new ItalianMainCourse());
-        order.addMeal(new Dessert());
+        order.addMeal(new ItalianMainCourse(mainCourse));
+        order.addMeal(new Dessert(dessert));
         return order;
     }
 
-    public Order orderMexicanLunch(){
+    public Order orderMexicanLunch(String mainCourse, String dessert){
         Order order = new Order();
-        order.addMeal(new MexicanMainCourse());
-        order.addMeal(new Dessert());
+        order.addMeal(new MexicanMainCourse(mainCourse));
+        order.addMeal(new Dessert(dessert));
         return order;
     }
 
-    public Order orderPolishLunch(){
+    public Order orderPolishLunch(String mainCourse, String dessert){
         Order order = new Order();
-        order.addMeal(new PolishMainCourse());
-        order.addMeal(new Dessert());
+        order.addMeal(new PolishMainCourse(mainCourse));
+        order.addMeal(new Dessert(dessert));
         return order;
     }
+
+
+
 
 
 }

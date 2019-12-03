@@ -4,26 +4,28 @@ import com.exercises.food_ordering_system.builder.Meal;
 
 import java.util.ArrayList;
 
+import static com.exercises.food_ordering_system.utility.fillingListFromFile.fillAList;
+
 public class Dessert implements Meal {
 
-    private ArrayList<String> desserts = new ArrayList<>();
+    private String name;
 
-    public void setDessert(String dessert){
-        desserts.add(dessert);
+    public Dessert(String name){
+        this.name = name;
     }
 
-    public String getDessert(){
-        return desserts.get(0);
-    }
+    private static String filePath = "food_ordering_system//foods_and_drinks//lunch//desserts//desserts";
+    public static ArrayList<String> listOfDesserts = fillAList(filePath);
+
 
 
     @Override
-    public String name() {
-        return "Dessert";
+    public String getName() {
+        return name;
     }
 
     @Override
-    public double price() {
+    public double getPrice() {
         return 10;
     }
 }

@@ -4,17 +4,26 @@ import com.exercises.food_ordering_system.builder.Meal;
 
 import java.util.ArrayList;
 
+import static com.exercises.food_ordering_system.utility.fillingListFromFile.fillAList;
+
 public class MexicanMainCourse implements Meal {
 
-    private ArrayList<String> mexicanMeals = new ArrayList<>();
+    public MexicanMainCourse(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
+    private static String filePath = "food_ordering_system//foods_and_drinks//lunch//main_courses//mexican//mexican_main_courses";
+    public static ArrayList<String> listOfMexicanMainCourses = fillAList(filePath);
 
     @Override
-    public String name() {
-        return "MexicanMainCourse";
+    public String getName() {
+        return name;
     }
 
     @Override
-    public double price() {
+    public double getPrice() {
         return 40;
     }
 }
