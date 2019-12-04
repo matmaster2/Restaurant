@@ -8,6 +8,8 @@ import com.exercises.food_ordering_system.builder.menu.DrinkAdditive;
 import com.exercises.food_ordering_system.builder.menu.main_courses.ItalianMainCourse;
 import com.exercises.food_ordering_system.builder.menu.main_courses.MexicanMainCourse;
 import com.exercises.food_ordering_system.builder.menu.main_courses.PolishMainCourse;
+import com.exercises.food_ordering_system.data.FileDataProvider;
+import com.exercises.food_ordering_system.data.IDataProvider;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,9 +18,9 @@ import static com.exercises.food_ordering_system.utility.fillingListFromFile.fil
 
 public class MakeOrder {
 
-  //  private static ArrayList<Order> orderList = new ArrayList<>();
+    private IDataProvider dataProvider = new FileDataProvider();
 
-    public static void startOrdering() {
+    public void startOrdering() {
         System.out.println("INSTRUCTION: For navigation, please press the buttons written in square brackets []\n");
         System.out.println("What do you want - lunch[1] or drink[2] or both of them?[3]");
         orderChoice();
@@ -26,19 +28,21 @@ public class MakeOrder {
     }
 
 
-    private static void orderChoice() {
+    private void orderChoice() {
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
         try {
             switch (Integer.parseInt(userInput)) {
                 case 1:
-                    mainCourseChoice();
+                    cuisineChoice();
+                    dessertChoice();
                     break;
                 case 2:
                     drinkChoice();
                     break;
                 case 3:
-                    mainCourseChoice();
+                    cuisineChoice();
+                    dessertChoice();
                     drinkChoice();
                     break;
                 default:
@@ -51,6 +55,207 @@ public class MakeOrder {
             startOrdering();
         }
     }
+
+    private void cuisineChoice() {
+        System.out.println("What kind of meal do you want?");
+
+        ArrayList<String> listOfMainCourses = fillAList("food_ordering_system//foods_and_drinks//type_of_main_courses");
+        listOfMainCourses.forEach(System.out::println);
+
+        Scanner sc = new Scanner(System.in);
+        String userInput = sc.nextLine();
+
+        try {
+            switch (Integer.parseInt(userInput)) {
+                case 1:
+                    italianMainCourseChoice();
+                    break;
+                case 2:
+                    mexicanMainCourseChoice();
+                    break;
+                case 3:
+                    polishMainCourseChoice();
+                    break;
+                default:
+                    System.out.println("Kliknales coś innego!");
+                    startOrdering();
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Musisz podać liczbę!");
+            startOrdering();
+        }
+    }
+
+
+    private void italianMainCourseChoice() {
+
+        ItalianMainCourse italianMainCourse = null;
+
+        ArrayList<ItalianMainCourse> listOfItalianMainCourses = dataProvider.getItalianMainCourse();
+
+        System.out.println("What kind of Italian main course do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfItalianMainCourses.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfItalianMainCourses.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfItalianMainCourses.size()) {
+            italianMainCourse = listOfItalianMainCourses.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderItalianMainCourse = orderBuilder.orderItalianMainCourse(italianMainCourse);
+
+    }
+
+    private void mexicanMainCourseChoice() {
+        MexicanMainCourse mexicanMainCourse = null;
+
+        ArrayList<MexicanMainCourse> listOfMexicanMainCourses = dataProvider.getMexicanMainCourse();
+
+        System.out.println("What kind of Mexican main course do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfMexicanMainCourses.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfMexicanMainCourses.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfMexicanMainCourses.size()) {
+            mexicanMainCourse = listOfMexicanMainCourses.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderMexicanMainCourse = orderBuilder.orderMexicanMainCourse(mexicanMainCourse);
+    }
+
+    private void polishMainCourseChoice() {
+        PolishMainCourse polishMainCourse = null;
+
+        ArrayList<PolishMainCourse> listOfPolishMainCourses = dataProvider.getPolishMainCourse();
+
+        System.out.println("What kind of Polish main course do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfPolishMainCourses.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfPolishMainCourses.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfPolishMainCourses.size()) {
+            polishMainCourse = listOfPolishMainCourses.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderPolishMainCourse = orderBuilder.orderPolishMainCourse(polishMainCourse);
+    }
+
+
+    private void drinkChoice() {
+
+        Drink drink = null;
+
+        ArrayList<Drink> listOfDrinks = dataProvider.getDrinks();
+
+        System.out.println("What kind of drink do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfDrinks.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfDrinks.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfDrinks.size()) {
+            drink = listOfDrinks.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderDrink = orderBuilder.orderDrink(drink);
+
+    }
+
+    private void drinkAdditiveChoice() {
+        DrinkAdditive drinkAdditive = null;
+
+        ArrayList<DrinkAdditive> listOfDrinkAdditives = dataProvider.getDrinkAdditive();
+
+        System.out.println("What kind of drink do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfDrinkAdditives.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfDrinkAdditives.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfDrinkAdditives.size()) {
+            drinkAdditive = listOfDrinkAdditives.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderDrink = orderBuilder.orderDrinkAdditive(drinkAdditive);
+    }
+
+
+    private void dessertChoice() {
+
+        Dessert dessert = null;
+
+        ArrayList<Dessert> listOfDesserts = dataProvider.getDessert();
+
+        System.out.println("What kind of dessert do you want?");
+        int choice;
+
+        OrderBuilder orderBuilder;
+
+        for (int i = 0; i < listOfDesserts.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + listOfDesserts.get(i).toString());
+        }
+
+        Scanner sc = new Scanner(System.in);
+        choice = Integer.parseInt(sc.nextLine());
+        if (choice > 0 && choice < listOfDesserts.size()) {
+            dessert = listOfDesserts.get(choice - 1);
+        }
+
+        orderBuilder = new OrderBuilder();
+        Order orderDessert = orderBuilder.orderDessert(dessert);
+
+    }
+
+
+    private static void showSummary() {
+        System.out.println("Your meal: ");
+        //for (Order order : orderList) {
+        //    order.showMeals();
+        //    order.getPrice();
+        // }
+        Order.showMeals();
+        //  Order.getPrice();
+    }
+
+}
+
+
+/*
+
 
     private static void mainCourseChoice() {
 
@@ -76,8 +281,8 @@ public class MakeOrder {
                     dessert = dessertChoice();
 
                     orderBuilder = new OrderBuilder();
-                    Order orderItalianMainCourse = orderBuilder.orderItalianLunch(meal, dessert);
-                   // orderList.add(orderItalianMainCourse);
+                    Order orderItalianMainCourse = orderBuilder.orderItalianMainCourse(meal, dessert);
+                    // orderList.add(orderItalianMainCourse);
                     break;
                 case 2:
                     System.out.println("Your choice is Mexican Course!");
@@ -86,8 +291,8 @@ public class MakeOrder {
                     dessert = dessertChoice();
 
                     orderBuilder = new OrderBuilder();
-                    Order orderMexicanMainCourse = orderBuilder.orderMexicanLunch(meal, dessert);
-                  //  orderList.add(orderMexicanMainCourse);
+                    Order orderMexicanMainCourse = orderBuilder.orderMexicanMainCourse(meal, dessert);
+                    //  orderList.add(orderMexicanMainCourse);
                     break;
                 case 3:
                     System.out.println("Your choice is Polish Course!");
@@ -97,8 +302,8 @@ public class MakeOrder {
 
 
                     orderBuilder = new OrderBuilder();
-                    Order orderPolishMainCourse = orderBuilder.orderPolishLunch(meal, dessert);
-                 //   orderList.add(orderPolishMainCourse);
+                    Order orderPolishMainCourse = orderBuilder.orderPolishMainCourse(meal, dessert);
+                    //   orderList.add(orderPolishMainCourse);
                     break;
                 default:
                     System.out.println("Kliknales coś innego!");
@@ -111,19 +316,18 @@ public class MakeOrder {
         }
     }
 
-
-    private static void drinkChoice() {
+private static void drinkChoice() {
         System.out.println("What kind of drink do you want?");
         String drink;
         String drinkAdditive;
 
         OrderBuilder orderBuilder;
 
-        Drink.listOfDrinks.forEach(System.out::println);
+        listOfDrinks.forEach(System.out::println);
         System.out.println("Write what drink do you want.");
         Scanner sc = new Scanner(System.in);
         drink = sc.nextLine();
-        inputCheck(drink, Drink.listOfDrinks);
+        inputCheck(drink, listOfDrinks);
 
         orderBuilder = new OrderBuilder();
         Order orderDrink = orderBuilder.orderDrink(drink);
@@ -138,13 +342,13 @@ public class MakeOrder {
                     System.out.println("Write what drink do you want.");
 
                     sc = new Scanner(System.in);
-                    drinkAdditive = sc.nextLine(); //todo nie wpisywanie z reki, tylko lista z pliku z indexOf
+                    drinkAdditive = sc.nextLine();
                     inputCheck(drinkAdditive, DrinkAdditive.listOfDrinkAdditives);
 
                     orderBuilder = new OrderBuilder();
 
                     Order orderDrinkWithAdditive = orderBuilder.orderDrinkAdditive(drinkAdditive);
-              //      orderList.add(orderDrinkWithAdditive);
+                    //      orderList.add(orderDrinkWithAdditive);
                     break;
                 case 2:
                     break;
@@ -158,57 +362,4 @@ public class MakeOrder {
             System.exit(0);
         }
     }
-
-    private static String dessertChoice() {
-        Dessert.listOfDesserts.forEach(System.out::println);
-
-        Scanner sc = new Scanner(System.in);
-        String dessert = sc.nextLine();
-
-        inputCheck(dessert, Dessert.listOfDesserts);
-
-        return dessert;
-    }
-
-    private static String cuisineChoice(ArrayList<String> listOfMeals) {
-        System.out.println("Menu:");
-        listOfMeals.forEach(System.out::println);
-        System.out.println("Write what meal do you want.");
-
-        Scanner sc = new Scanner(System.in);
-        String meal = sc.nextLine();
-
-        inputCheck(meal, listOfMeals);
-
-        return meal;
-
-    }
-
-
-    private static void showSummary() {
-        System.out.println("Your meal: ");
-        //for (Order order : orderList) {
-        //    order.showMeals();
-        //    order.getPrice();
-       // }
-        Order.showMeals();
-    }
-
-
-    private static void inputCheck(String input, ArrayList<String> list) { //todo do usuniecia
-
-        boolean check = false;
-
-        for (String item : list) {
-            if (item.contains(input)) {
-                check = true;
-            }
-
-
-        if (check == false) {
-            System.out.println("This position isn't exist on menu. Try again!");
-            System.exit(0);
-        }
-    }
-}
-}
+ */

@@ -11,19 +11,19 @@ public class Order {
         meals.add(meal);
     }
 
-    public double getPrice() {
+    public static double getPrice() {
         double price = 0;
 
         for (Meal meal : meals) {
             price = price + meal.getPrice();
         }
-
+        System.out.println("Total price: "+price);
         return price;
     }
 
     public static void showMeals() {
         for (Meal meal : meals) {
-            System.out.println(meal.getName() +", Price: " +  meal.getPrice());
+            System.out.println(meal.getName() + ", Price: " + meal.getPrice());
         }
     }
 

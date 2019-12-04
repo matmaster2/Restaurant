@@ -2,21 +2,15 @@ package com.exercises.food_ordering_system.builder.menu;
 
 import com.exercises.food_ordering_system.builder.Meal;
 
-import java.util.ArrayList;
-
-import static com.exercises.food_ordering_system.utility.fillingListFromFile.fillAList;
-
 public class Drink implements Meal {
 
     private String name;
+    private double price;
 
-    public Drink(String name){
+    public Drink(String name, double price) {
         this.name = name;
+        this.price = price;
     }
-
-    private static String filePath = "food_ordering_system//foods_and_drinks//drinks//drinks";
-    public static ArrayList<String> listOfDrinks = fillAList(filePath);
-
 
     @Override
     public String getName() {
@@ -25,7 +19,15 @@ public class Drink implements Meal {
 
     @Override
     public double getPrice() {
-        return 20;
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
 

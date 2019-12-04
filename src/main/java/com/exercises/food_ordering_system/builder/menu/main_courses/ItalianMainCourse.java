@@ -2,20 +2,15 @@ package com.exercises.food_ordering_system.builder.menu.main_courses;
 
 import com.exercises.food_ordering_system.builder.Meal;
 
-import java.util.ArrayList;
-
-import static com.exercises.food_ordering_system.utility.fillingListFromFile.fillAList;
-
 public class ItalianMainCourse implements Meal {
 
-    public ItalianMainCourse(String name) {
-        this.name = name;
-    }
-
     private String name;
+    private double price;
 
-    private static String filePath = "food_ordering_system//foods_and_drinks//lunch//main_courses//italian//italian_main_courses";
-    public static ArrayList<String> listOfItalianMainCourses = fillAList(filePath);
+    public ItalianMainCourse(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 
     @Override
     public String getName() {
@@ -24,7 +19,14 @@ public class ItalianMainCourse implements Meal {
 
     @Override
     public double getPrice() {
-        return 40;
+        return price;
     }
 
+    @Override
+    public String toString() {
+        return "ItalianMainCourse{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
