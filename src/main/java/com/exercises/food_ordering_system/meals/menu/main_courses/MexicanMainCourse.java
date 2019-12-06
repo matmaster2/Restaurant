@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system.builder.menu.main_courses;
+package com.exercises.food_ordering_system.meals.menu.main_courses;
 
-import com.exercises.food_ordering_system.builder.Meal;
+import com.exercises.food_ordering_system.meals.Meal;
 
 public class MexicanMainCourse implements Meal {
 
@@ -11,7 +11,6 @@ public class MexicanMainCourse implements Meal {
         this.name = name;
         this.price = price;
     }
-
 
     @Override
     public String getName() {
@@ -25,9 +24,7 @@ public class MexicanMainCourse implements Meal {
 
     @Override
     public String toString() {
-        return "MexicanMainCourse{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return " " + name +
+                ", price=" + price;
     }
 }

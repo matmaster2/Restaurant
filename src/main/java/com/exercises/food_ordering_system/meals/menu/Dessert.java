@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system.builder.menu;
+package com.exercises.food_ordering_system.meals.menu;
 
-import com.exercises.food_ordering_system.builder.Meal;
+import com.exercises.food_ordering_system.meals.Meal;
 
 public class Dessert implements Meal {
 
@@ -11,7 +11,6 @@ public class Dessert implements Meal {
         this.name = name;
         this.price = price;
     }
-
 
     @Override
     public String getName() {
@@ -25,9 +24,7 @@ public class Dessert implements Meal {
 
     @Override
     public String toString() {
-        return "Dessert{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return " " + name +
+                ", price=" + price;
     }
 }

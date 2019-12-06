@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system.builder.menu;
+package com.exercises.food_ordering_system.meals.menu;
 
-import com.exercises.food_ordering_system.builder.Meal;
+import com.exercises.food_ordering_system.meals.Meal;
 
 public class DrinkAdditive implements Meal {
 
@@ -24,9 +24,7 @@ public class DrinkAdditive implements Meal {
 
     @Override
     public String toString() {
-        return "DrinkAdditive{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return " " + name +
+                ", price=" + price;
     }
 }

@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system.builder.menu.main_courses;
+package com.exercises.food_ordering_system.meals.menu.main_courses;
 
-import com.exercises.food_ordering_system.builder.Meal;
+import com.exercises.food_ordering_system.meals.Meal;
 
 public class ItalianMainCourse implements Meal {
 
@@ -24,9 +24,7 @@ public class ItalianMainCourse implements Meal {
 
     @Override
     public String toString() {
-        return "ItalianMainCourse{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return " " + name +
+                ", price=" + price;
     }
 }

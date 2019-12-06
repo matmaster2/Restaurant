@@ -1,15 +1,13 @@
 package com.exercises.food_ordering_system.data;
 
-import com.exercises.food_ordering_system.builder.Meal;
-import com.exercises.food_ordering_system.builder.menu.Dessert;
-import com.exercises.food_ordering_system.builder.menu.Drink;
-import com.exercises.food_ordering_system.builder.menu.DrinkAdditive;
-import com.exercises.food_ordering_system.builder.menu.main_courses.ItalianMainCourse;
-import com.exercises.food_ordering_system.builder.menu.main_courses.MexicanMainCourse;
-import com.exercises.food_ordering_system.builder.menu.main_courses.PolishMainCourse;
+import com.exercises.food_ordering_system.meals.menu.Dessert;
+import com.exercises.food_ordering_system.meals.menu.Drink;
+import com.exercises.food_ordering_system.meals.menu.DrinkAdditive;
+import com.exercises.food_ordering_system.meals.menu.main_courses.ItalianMainCourse;
+import com.exercises.food_ordering_system.meals.menu.main_courses.MexicanMainCourse;
+import com.exercises.food_ordering_system.meals.menu.main_courses.PolishMainCourse;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface IDataProvider {
 
