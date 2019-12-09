@@ -19,7 +19,7 @@ public class MakeOrder {
     private Order order = new Order();
 
     public void startOrdering() {
-        System.out.println("INSTRUCTION: For navigation, please press the buttons written in square brackets []\n");
+        System.out.println("INSTRUCTION: For navigation, please press the number button written in square brackets [] and press enter\n");
         System.out.println("What do you want - lunch[1] or drink[2] or both of them?[3]");
         orderChoice();
         showSummary();
@@ -61,8 +61,8 @@ public class MakeOrder {
 
         Scanner sc = new Scanner(System.in);
         do {
-            choice = Integer.parseInt(sc.nextLine());
             try {
+                choice = Integer.parseInt(sc.nextLine());
                 switch (choice) {
                     case 1:
                         italianMainCourseChoice();
@@ -107,7 +107,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
                 break;
             }
         } while (choice == 0);
@@ -138,7 +138,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
             }
         } while (choice == 0);
 
@@ -168,7 +168,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
             }
         } while (choice == 0);
 
@@ -199,7 +199,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
             }
         } while (choice == 0);
 
@@ -216,7 +216,7 @@ public class MakeOrder {
                 } else if (choice == 2) {
                     break;
                 } else {
-                    System.out.println("You press wrong button! Press [1] or [2]!");
+                    System.out.println("You press wrong number! Press [1] or [2]!");
                 }
             } catch (Exception e) {
                 System.out.println("You press wrong button! Press [1] or [2]!");
@@ -247,7 +247,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
             }
         } while (choice == 0);
 
@@ -277,7 +277,7 @@ public class MakeOrder {
                     choice = 0;
                 }
             } catch (Exception e) {
-                System.out.println("You press wrong button!");
+                System.out.println("You must enter a number!");
             }
         } while (choice == 0);
 
