@@ -1,11 +1,10 @@
 package com.exercises.food_ordering_system;
 
-import com.exercises.food_ordering_system.tasks.MakeOrder;
+import com.exercises.food_ordering_system.tasks.OrderManager;
 
 public class Main {
 
     public static void main(String[] args) {
-        MakeOrder makeOrder = new MakeOrder();
-        makeOrder.startOrdering();
+        new OrderManager().startOrdering();
     }
 }
