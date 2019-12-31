@@ -1,9 +1,9 @@
-package com.exercises.food_ordering_system.tasks;
+package food_ordering_system.tasks;
 
-import com.exercises.food_ordering_system.data.FileDataProvider;
-import com.exercises.food_ordering_system.data.IDataProvider;
-import com.exercises.food_ordering_system.model.Meal;
-import com.exercises.food_ordering_system.model.Order;
+import food_ordering_system.data.FileDataProvider;
+import food_ordering_system.data.IDataProvider;
+import food_ordering_system.model.Meal;
+import food_ordering_system.model.Order;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,17 +13,16 @@ public class OrderManager {
     private IDataProvider dataProvider = new FileDataProvider();
     private Order order = new Order();
 
-    private static void showSummary() {
-        System.out.println("Your meal: ");
-        Order.showWholeOrder();
-        Order.showTotalPrice();
-    }
-
     public void startOrdering() {
         System.out.println("INSTRUCTION: For navigation, please press the number button written in square brackets [] and press enter\n");
         System.out.println("What do you want - lunch[1] or drink[2] or both of them?[3]");
         orderChoice();
         showSummary();
+    }
+    private static void showSummary() {
+        System.out.println("Your meal: ");
+        Order.showWholeOrder();
+        Order.showTotalPrice();
     }
 
     private void orderChoice() {
@@ -183,4 +182,3 @@ public class OrderManager {
         }
     }
 }
-

@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system;
+package food_ordering_system;
 
-import com.exercises.food_ordering_system.tasks.OrderManager;
+import food_ordering_system.tasks.OrderManager;
 
 public class Main {
 

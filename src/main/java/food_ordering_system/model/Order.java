@@ -1,4 +1,4 @@
-package com.exercises.food_ordering_system.model;
+package food_ordering_system.model;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package com.exercises.food_ordering_system.data;
+package food_ordering_system.data;
 
-import com.exercises.food_ordering_system.model.Meal;
+import food_ordering_system.model.Meal;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
